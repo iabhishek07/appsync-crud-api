@@ -48,9 +48,9 @@ jobs:
       # Deploy to dev environment (Mumbai Region)
       - name: Deploy dev
         if: github.ref == 'refs/heads/dev'
-        run: serverless deploy --region ${{secrets.dev_region}} --verbose
+        run: serverless deploy --region ${{secrets.DEV_REGION}} --verbose
 
       # Deploy to prod environment (Oregon Region)
       - name: Deploy prod
         if: github.ref == 'refs/heads/main'
-        run: serverless deploy --region ${{secrets.dev_region}} --verbose
+        run: serverless deploy --region ${{secrets.PROD_REGION}} --verbose
