@@ -2,7 +2,12 @@ const ZipPlugin = require("zip-webpack-plugin");
 const path = require("path");
 
 const config = {
-  entry: {},
+  entry: {
+    createBlog: "./Lambdas/createBlog/index.js",
+    getBlog: "./Lambdas/getBlog/index.js",
+    updateBlog: "./Lambdas/updateBlog/index.js",
+    deleteBlog: "./Lambdas/deleteBlog/index.js"
+  },
   output: {
     filename: "[name]/index.js",
     path: path.resolve(__dirname, "dist/"),

@@ -1,0 +1,48 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+    # Query for user details
+    getBlog(id: ID!): AWSJSON
+}
+
+type Mutation {
+    # Creat blog
+    createBlog(input: CreateBlogInput!): AWSJSON
+
+    # Update blog
+    updateBlog(input: UpdateBlogInput!): AWSJSON
+
+    # delete an user
+    deleteBlog(id: ID!): AWSJSON
+}
+
+input UpdateBlogInput {
+    id: ID!
+    title: String
+    blogUrl: String
+    author: String
+    publicationDate: AWSDate
+}
+
+input CreateBlogInput {
+    title: String!
+    blogUrl: String!
+    author: String!
+    publicationDate: AWSDate!
+}
+
+type Blog {
+    id: ID
+    title: String
+    blogUrl: String
+    author: String
+    publicationDate: AWSDate
+}
+
+
+
+
+
