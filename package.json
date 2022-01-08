@@ -20,7 +20,8 @@
   "homepage": "https://github.com/iabhishek07/appsync-crud-api#readme",
   "dependencies": {
     "aws-sdk": "^2.1053.0",
-    "serverless": "^2.70.0"
+    "serverless": "^2.70.0",
+    "ulid": "^2.3.0"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",

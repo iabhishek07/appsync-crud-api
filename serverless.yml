@@ -24,7 +24,7 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
         - dynamodb:PutItem
-        Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB}"
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB}"
 
 plugins:
   - serverless-plugin-split-stacks
@@ -52,7 +52,7 @@ functions:
       artifact: "./dist/updateBlog.zip"
   deleteBlog:
     handler: deleteBlog/index.handler
-    name: deleteBlog
+    name: deleteBlog-${self:provider.stage}
     package:
       individually: true
       artifact: "./dist/deleteBlog.zip"
