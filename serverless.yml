@@ -5,7 +5,78 @@ provider:
   name: aws
   runtime: nodejs12.x
   lambdaHashingVersion: 20201221
+  region: ${env:REGION, 'ap-south-1'}
+  stage: ${opt:stage, 'dev'}
+  timeout: 30
+
+  # Environment variables
+  environment:
+    STAGE: ${self:provider.stage}
+    REGION: ${self:provider.region}
+    SERVICE_NAME: ${self:service}-${self:provider.stage}
+    DYNAMODB: ${self:service}-${self:provider.stage}
+
+  # IAM statements
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:GetItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+        - dynamodb:PutItem
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB}"
+
+plugins:
+  - serverless-plugin-split-stacks
+  - serverless-appsync-plugin
+  - serverless-dotenv-plugin
 
 functions:
-  hello:
-    handler: handler.hello
+  createBlog:
+    handler: createBlog/index.handler
+    name: createBlog-${self:provider.stage}
+    package:
+      individually: true
+      artifact: "./dist/createBlog.zip"
+  getBlog:
+    handler: getBlog/index.handler
+    name: getBlog-${self:provider.stage}
+    package:
+      individually: true
+      artifact: "./dist/getBlog.zip"
+  updateBlog:
+    handler: updateBlog/index.handler
+    name: updateBlog-${self:provider.stage}
+    package:
+      individually: true
+      artifact: "./dist/updateBlog.zip"
+  deleteBlog:
+    handler: deleteBlog/index.handler
+    name: deleteBlog-${self:provider.stage}
+    package:
+      individually: true
+      artifact: "./dist/deleteBlog.zip"
+
+custom:
+  splitStacks:
+    nestedStackCount: 4
+    perFunction: false
+    perType: true
+    perGroupFunction: false
+  appSync: ${file(serverless-appsync-api.yml)}
+
+resources:
+  Resources:
+    BlogsTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:provider.environment.DYNAMODB}
