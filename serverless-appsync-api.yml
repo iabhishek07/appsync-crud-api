@@ -1,0 +1,32 @@
+name: appsync-crud-api
+schema: schema.api.graphql
+authenticationType: API_KEY
+apiKeys:
+  - apiKey
+mappingTemplatesLocation: ${file(./Resources/AppSyncResources/AppSyncMappingTemplates.yml)}
+
+dataSources:
+  - type: AWS_LAMBDA
+    name: createBlog
+    description: 'Lambda'
+    config:
+      functionName: createBlog
+      iamRoleStatements: ${file(./Resources/AppSyncResources/AppSyncRole.yml)}
+  - type: AWS_LAMBDA
+    name: getBlog
+    description: 'Lambda'
+    config:
+      functionName: getBlog
+      iamRoleStatements: ${file(./Resources/AppSyncResources/AppSyncRole.yml)}
+  - type: AWS_LAMBDA
+    name: updateBlog
+    description: 'Lambda'
+    config:
+      functionName: updateBlog
+      iamRoleStatements: ${file(./Resources/AppSyncResources/AppSyncRole.yml)}
+  - type: AWS_LAMBDA
+    name: deleteBlog
+    description: 'Lambda'
+    config:
+      functionName: deleteBlog
+      iamRoleStatements: ${file(./Resources/AppSyncResources/AppSyncRole.yml)}

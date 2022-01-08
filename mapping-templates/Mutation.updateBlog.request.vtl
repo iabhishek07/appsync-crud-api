@@ -1,0 +1,8 @@
+{
+  "version" : "2018-05-29",
+  "operation": "Invoke",
+  "payload": {
+    "userDetails": $utils.toJson($context.args.input),
+    "updatedAt": $utils.toJson($util.time.nowFormatted('yyyy-MM-dd HH:mm:ssZ'))
+  }
+}

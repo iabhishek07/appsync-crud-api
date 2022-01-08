@@ -4,7 +4,9 @@
   "description": "AWS AppSync API to perform CRUD operations",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "bundle": "./node_modules/.bin/webpack",
+    "formatCheck": "prettier --check --ignore-path .gitignore \"./**/*.{js,json}\"",
+    "format": "prettier --write --ignore-path .gitignore \"./**/*.{js,json}\""
   },
   "repository": {
     "type": "git",
