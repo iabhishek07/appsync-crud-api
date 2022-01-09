@@ -4,7 +4,7 @@ const { updateItem } = require("../ddb-helpers");
 
 exports.handler = async event => {
   console.log("Event-", event);
-  const blogDetails = event.input;
+  const blogDetails = event;
   const { id } = blogDetails;
 
   delete blogDetails.id;
