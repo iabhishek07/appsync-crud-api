@@ -8,7 +8,7 @@ This project is a template for AWS AppSync CRUD operations.
 - Serverless Framework for IaC.
 - GitHub actions for CI/CD.
 - Webpack for packaging code.
-- Eslint for linting.
+- ESLint for linting.
 
 ### How to setup the project
 
@@ -40,7 +40,7 @@ This project is a template for AWS AppSync CRUD operations.
 
 ### CI/CD Setup (GitHub Actions Workflow)
 #### Steps to setup CI/CD using GitHub Actions
-The following is the list of steps that is executed as a part of the CICD setup:
+The following is the list of steps that is executed as a part of the CI/CD setup:
 
 1. Store all account credentials in GitHub secrets to access them in environment without exposing. The AWS credentials will be used for deploying the application into your AWS account.
 ```
@@ -60,4 +60,3 @@ PROD_REGION: ${{secrets.PROD_REGION}}
 
 #### Image for the Serverless deploy job:
 <img src="./readme-assets/jobs-serverless-deploy.png" width = "787px" height="928"/></p>
-
