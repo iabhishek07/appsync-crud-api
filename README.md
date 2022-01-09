@@ -1,6 +1,11 @@
 ## AWS AppSync CRUD API for Blogs
 This project is a template for AWS AppSync CRUD operations.
 
+**Video explaining the project structure and IaC with API testing:**
+<div align="left">
+  <a href="https://www.youtube.com/watch?v=THFPUMcF86E"><img src="https://img.youtube.com/vi/THFPUMcF86E/0.jpg" alt="IMAGE ALT TEXT"></a>
+</div>
+
 ### Services
 - AWS AppSync
 - AWS Lambda
