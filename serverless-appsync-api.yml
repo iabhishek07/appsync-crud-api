@@ -3,7 +3,8 @@ schema: schema.api.graphql
 authenticationType: API_KEY
 apiKeys:
   - apiKey
-mappingTemplatesLocation: ${file(./Resources/AppSyncResources/AppSyncMappingTemplates.yml)}
+mappingTemplatesLocation: mapping-templates
+mappingTemplates: ${file(./Resources/AppSyncResources/AppSyncMappingTemplates.yml)}
 
 dataSources:
   - type: AWS_LAMBDA

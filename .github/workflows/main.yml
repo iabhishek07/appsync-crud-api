@@ -22,6 +22,7 @@ jobs:
         run: npm run formatCheck --verbose
 
   serverless-deploy:
+    needs: formatting-check
     runs-on: ubuntu-latest
 
     env:

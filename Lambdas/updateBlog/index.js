@@ -3,7 +3,8 @@ const { DYNAMODB } = process.env;
 const { updateItem } = require("../ddb-helpers");
 
 exports.handler = async event => {
-  const blogDetails = event.input;
+  console.log("Event-", event);
+  const blogDetails = event;
   const { id } = blogDetails;
 
   delete blogDetails.id;
